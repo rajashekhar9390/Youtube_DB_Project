@@ -36,7 +36,7 @@ targets:
 
     workspace:
       host: https://dbc-dd0df349-1957.cloud.databricks.com
-      root_path: /Workspace/Users/kkavithareddy300@gmail.com/.bundle/${bundle.name}/${bundle.target}
+      root_path: /workspace/Youtube_DB_Project
 
     variables:
       catalog: youtube_prod

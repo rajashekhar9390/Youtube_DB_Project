@@ -1,0 +1,33 @@
+
+# The main pipeline for Youtube_project_bundle
+
+resources:
+  pipelines:
+
+    bronze_silver_earthquake_etl:
+
+      name: Bronze_Silver_EarthQuake
+
+      configuration:
+        spark.sql.ansi.enabled: "true"
+        catalog_name: ${var.catalog}
+
+      libraries:
+        - glob:
+            include: "../src/DLT_Pipeline/Bronze to Silver/transformations/**"
+
+      schema: silver
+
+      continuous: false
+
+      development: false
+
+      photon: true
+
+      channel: CURRENT
+
+      catalog: ${var.catalog}
+
+      serverless: true
+
+      root_path: "../src/DLT_Pipeline/Bronze to Silver"

@@ -1,0 +1,63 @@
+resources:
+  jobs:
+
+    Youtube_Earthquake_Job:
+
+      name: Youtube_Earthquake_Job
+
+      tasks:
+
+        # 1. Bronze Ingestion
+        - task_key: ingestion_bronze
+
+          notebook_task:
+
+            notebook_path: ../src/Notebooks/ingestion_bronze.ipynb
+            base_parameters:
+
+              catalog_name: ${var.catalog}
+
+            source: WORKSPACE
+
+
+        # 2. Bronze → Silver Pipeline
+        - task_key: Bronze_silver_Earthqake
+
+          depends_on:
+
+            - task_key: ingestion_bronze
+
+          pipeline_task:
+
+            pipeline_id: ${resources.pipelines.bronze_silver_earthquake_etl.id}
+
+
+        # 3. EarthQuake Dashboard
+        - task_key: EarthQuake
+
+          depends_on:
+
+            - task_key: Bronze_silver_Earthqake
+
+          dashboard_task:
+
+            subscription: {}
+
+            warehouse_id: ${var.warehouse_id}
+
+            dashboard_id: 01f1b5848bfe13cb9b4ce1aadc9bdf7b
+
+
+      queue:
+
+        enabled: true
+
+
+      parameters:
+
+        - name: catalog_name
+
+          default: ${var.catalog}
+
+
+      performance_target: PERFORMANCE_OPTIMIZED

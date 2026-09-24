@@ -1,0 +1,48 @@
+bundle:
+  name: Youtube_project_bundle
+  uuid: aa75f141-6ef1-4891-ae06-6fb2f73043b8
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: The catalog to use
+
+  schema:
+    description: The schema to use
+
+  warehouse_id:
+    description: Warehouse ID
+
+targets:
+  dev:
+    mode: development
+    default: true
+
+    workspace:
+      host: https://dbc-dd0df349-1957.cloud.databricks.com
+
+    variables:
+      catalog: youtube_dev
+      schema: dev
+      warehouse_id: 565d2d3646b3fef1
+
+    presets:
+      artifacts_dynamic_version: true
+
+  prod:
+    mode: production
+
+    workspace:
+      host: https://dbc-dd0df349-1957.cloud.databricks.com
+      root_path: /Workspace/Users/kkavithareddy300@gmail.com/.bundle/${bundle.name}/${bundle.target}
+
+    variables:
+      catalog: youtube_prod
+      schema: prod
+      warehouse_id: 565d2d3646b3fef1
+
+    permissions:
+      - user_name: kkavithareddy300@gmail.com
+        level: CAN_MANAGE

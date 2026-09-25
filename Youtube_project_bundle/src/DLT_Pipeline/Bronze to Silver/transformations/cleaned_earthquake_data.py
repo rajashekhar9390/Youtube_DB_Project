@@ -8,7 +8,8 @@ from pyspark.sql.functions import (
 )
 from pyspark.sql.types import StructType, StructField, StringType, ArrayType, DoubleType
 
-volume_path = "/Volumes/youtube_dev/bronze/earthquake"
+catalog_name = spark.conf.get("catalog_name")
+volume_path = f"/Volumes/{catalog_name}/bronze/earthquake"
 
 
 properties_schema = StructType(

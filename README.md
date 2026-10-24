@@ -1,4 +1,4 @@
-# 🌍 Earthquake Data Engineering Project — Databricks
+# 🌍 Youtube Earthquake Data Engineering Project — Databricks
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Azure_Databricks-FF3621?style=for-the-badge&logo=databricks&logoColor=white" alt="Azure Databricks"/>

@@ -1,9 +1,10 @@
+
 resources:
   jobs:
 
     Youtube_Earthquake_Job:
 
-      name: Youtube_Earthquake_Job
+      name: Youtube_Earthquake_Job_prod
 
       tasks:
 

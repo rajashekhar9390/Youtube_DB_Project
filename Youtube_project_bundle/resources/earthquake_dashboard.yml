@@ -3,7 +3,7 @@ resources:
 
     earthquake_monitor:
 
-      display_name: "Youtube_EarthQuake_Dashboard"
+      display_name: "Youtube_EarthQuake_Dashboard_prod"
 
       file_path: ../src/DashBoard/EarthQuake_Dashboard.lvdash.json
 
